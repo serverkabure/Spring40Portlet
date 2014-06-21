@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/util
+		http://www.springframework.org/schema/util/spring-util-4.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/jee
+		http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+		http://www.springframework.org/schema/lang
+		http://www.springframework.org/schema/lang/spring-lang-4.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+	<bean id="viewController"
+		class="org.springframework.web.portlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="/WEB-INF/spring40/view.jsp" />
+	</bean>
+
+	<bean id="helpController"
+		class="org.springframework.web.portlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="/WEB-INF/spring40/help.jsp" />
+	</bean>
+
+	<bean id="editController"
+		class="org.springframework.web.portlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="/WEB-INF/spring40/edit.jsp" />
+	</bean>
+
+	<bean id="portletModeHandlerMapping"
+		class="org.springframework.web.portlet.handler.PortletModeHandlerMapping">
+		<property name="portletModeMap">
+			<map>
+				<entry key="view" value-ref="viewController" />
+				<entry key="help" value-ref="helpController" />
+				<entry key="edit" value-ref="editController" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- Wrapping a pre-existing JSR-168-compliant Portlet -->
+	<!-- <bean id="welcomePortlet" -->
+	<!-- class="org.springframework.web.portlet.mvc.PortletWrappingController"> -->
+	<!-- <property name="portletClass" -->
+	<!-- value="org.springframework.samples.petportal.portlet.WelcomePortlet" 
+		/> -->
+	<!-- <property name="useSharedPortletConfig" value="false" /> -->
+	<!-- <property name="portletName" value="wrapped-welcome" /> -->
+	<!-- <property name="initParameters"> -->
+	<!-- <props> -->
+	<!-- <prop key="dog">Poodle</prop> -->
+	<!-- <prop key="cat">Calico</prop> -->
+	<!-- <prop key="bird">Macaw</prop> -->
+	<!-- </props> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+
+	<!-- Alternate method to reuse portlet - simpler, but no ability to rename 
+		or set init parameters <bean id="simplePortletHandlerAdapter" class="org.springframework.web.portlet.handler.SimplePortletHandlerAdapter"/> 
+		<bean id="simplePortletPostProcessor" class="org.springframework.web.portlet.handler.SimplePortletPostProcessor"/> 
+		<bean id="welcomePortlet" class="org.springframework.samples.petportal.portlet.WelcomePortlet"/> -->
+
+</beans>

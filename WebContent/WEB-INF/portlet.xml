@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<portlet-app version="1.0"
+	xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd
+	                             http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd">
+	<!-- JSR168使用不可なので、JSR286のみで使用予定; Failed to load portlet org.springframework.web.portlet.DispatcherPortlet: 
+		java.lang.NoClassDefFoundError: javax/portlet/StateAwareResponse -->
+	<portlet>
+		<portlet-name>spring40</portlet-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/spring40/spring40-portlet.xml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>help</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>spring40</title>
+		</portlet-info>
+	</portlet>
+
+</portlet-app>
